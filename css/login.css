@@ -1,0 +1,34 @@
+#login{
+    width: 500px;
+    height: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 5px gray;
+    padding: 10px;
+    box-sizing: border-box;
+
+
+}
+body{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+#login>img{
+
+    width: 100%;
+}
+
+#login>h1{
+    text-align: center;
+    color: #009688;
+    margin-bottom: 10px;
+}
+
+#verifyCode{
+    vertical-align: middle;
+    height: 42px;
+}
