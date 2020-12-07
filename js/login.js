@@ -29,13 +29,13 @@
       method: "get",
       dataType: "json",
       xhrFields: {
-        withCredentials: true
+        withCredentials: true //允许携带cookie
       },
       crossDomain: true,
       success: function(data) {
         console.log(data)
         if (data.code == 200) {
-          window.location.href = "index.html";
+          window.location.href = "http://192.168.90.46:8888/repair-page/index.html";
           return false;
         } else if (data.code == 500) {
           var layer = layui.layer;
