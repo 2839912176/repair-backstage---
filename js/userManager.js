@@ -249,3 +249,37 @@ function deleteUser() {
         }
     });
 }
+
+(function () {
+    //拖拽上传
+    layui.upload.render({
+        elem: '#uploadFileModel'
+        ,url: 'http://192.168.90.46:8080/repair/user/importExcel' //改成您自己的上传接口
+        ,accept: 'file' //普通文件
+        ,exts: 'xls|excel|xlsx' //只允许上传excel文件
+        ,done: function(res){
+            layui.layer.msg(res.msg);
+            layui.layer.close(uploadFileModel);
+            layui.table.reload("user-table");
+
+        }
+    });
+})();
+
+function exportExcel() {
+    var userName = layui.$("input[name='searchUserName']").val();
+    var a = document.createElement("a");
+    a.href = "http://192.168.90.46:8080/repair/user/exportExcel?userName="+userName;
+    a.style.display = "none";
+    document.body.appendChild(a);
+    a.click();
+}
+
+function importExcel() {
+    uploadFileModel = layui.layer.open({
+        type: 1,
+        title: "上传用户信息",
+        content: layui.$("#uploadFileModel")
+
+    });
+}
