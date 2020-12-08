@@ -6,6 +6,16 @@
     <title>Title</title>
     <link rel="stylesheet" href="../layui/css/layui.css">
     <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <script>
+        function exportExcel() {
+            var userName = layui.$("input[name='searchUserName']").val();
+            var a = document.createElement("a");
+            a.href = "http://192.168.90.46:8080/repair/user/exportExcel?userName="+userName;
+            a.style.display = "none";
+            document.body.appendChild(a);
+            a.click();
+        }
+    </script>
 </head>
 <body>
 <h2>用户管理</h2>
@@ -13,6 +23,8 @@
     <button class="layui-btn" onclick="showAddModel()"><i class="fa fa-plus"></i> 添加</button>
     <button class="layui-btn layui-bg-red" onclick="deleteUser()"><i class="fa fa-minus"></i> 删除</button>
     <button class="layui-btn layui-bg-cyan" onclick="editUser()"><i class="fa fa-edit"></i> 编辑</button>
+    <button class="layui-btn layui-bg-green" onclick="exportExcel()"><i class="fa fa-edit"></i> 导出</button>
+    <button class="layui-btn layui-bg-red" onclick="importExcel()"><i class="fa fa-edit"></i> 导入</button>
 
     <input type="text" name="searchUserName" placeholder="请输入用户名" autocomplete="off" class="layui-input"
            style="margin-left: 40px;width: 400px;margin-right: 0px">
