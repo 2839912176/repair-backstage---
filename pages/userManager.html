@@ -15,6 +15,17 @@
             document.body.appendChild(a);
             a.click();
         }
+        
+        function importExcel() {
+            uploadFileModel = layui.layer.open({
+                type: 1,
+                title: "上传用户信息",
+                content: layui.$("#uploadFileModel")
+
+            });
+        }
+
+
     </script>
 </head>
 <body>
@@ -33,6 +44,14 @@
 
 </div>
 
+
+<div class="layui-upload-drag" id="uploadFileModel" style="display: none">
+    <i class="layui-icon"></i>
+    <p>点击上传，或将文件拖拽到此处</p>
+    <div class="layui-hide" id="uploadDemoView">
+        <hr>
+    </div>
+</div>
 </div>
 <div id="editUserModel" style="padding: 10px;display: none">
     <form id="editUserForm" class="layui-form layui-form-pane">
@@ -85,5 +104,22 @@
 <table id="user-table" lay-filter="test"></table>
 <script src="../layui/layui.all.js"></script>
 <script src="../js/userManager.js"></script>
+<script>
+    (function () {
+        //拖拽上传
+        layui.upload.render({
+            elem: '#uploadFileModel'
+            ,url: 'http://192.168.90.46:8080/repair/user/importExcel' //改成您自己的上传接口
+            ,accept: 'file' //普通文件
+            ,exts: 'xls|excel|xlsx' //只允许上传excel文件
+            ,done: function(res){
+                layui.layer.msg(res.msg);
+                layui.layer.close(uploadFileModel);
+                layui.table.reload("user-table");
+
+            }
+        });
+    })();
+</script>
 </body>
 </html>
